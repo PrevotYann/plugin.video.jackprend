@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="30001">
+        <setting id="torrent_enable" type="bool" label="Use Torrent" default="true"/>
+        <setting id="torrent_client" type="labelenum" label="30002" values="Jacktorr|Torrest|Elementum" default="Jacktorr" visible="eq(-1,true)"/>
+        <setting label="Playback" type="lsep"/>
+        <setting id="auto_play" type="bool" label="Auto-Play" default="false"/>
+        <setting id="playnext_dialog_enabled" type="bool" label="Enable Next Episode Dialog" default="true"/>
+        <setting id="playnext_time" type="slider" label="Seconds left before show Next Episode Dialog" option="int" range="10,5,180" default="50"/>
+        <setting label="Cache" type="lsep"/>
+        <setting id="cache_enabled" type="bool" label="30107" default="true"/>
+        <setting id="cache_expiration" type="slider" label="30105" option="int" range="1,1,30" default="24"/>
+        <setting type="action" label="30106" action="RunPlugin(plugin://plugin.video.jacktook/?action=clear_all_cached)" />
+        <setting label="Update" type="lsep"/>
+        <setting type="action" label="Update addon" action="RunPlugin(plugin://plugin.video.jacktook/?action=addon_update)"/>
+        <setting id="clear_cache_update" type="bool" label="Clear cache when update" default="true"/>
+    </category>
+    <category label="30020">
+        <setting label="Indexers Configuration" type="lsep"/>
+        <setting id="indexers_total_results" type="number" label="30029" default="60"/>
+        <setting id="indexers_desc_length" type="number" label="30026" default="100"/>
+        <setting id="indexers_sort_by" type="labelenum" label="Sort" values="Seeds|Size|Quality|Cached|Date|None" default="Quality"/>
+        <setting id="filter_by_episode" type="bool" label="30710" default="true"/>
+        <setting label="Torrentio Configuration" type="lsep"/>
+        <setting id="torrentio_enabled" type="bool" label="Enable" default="true"/>
+        <setting id="torrentio_host" type="text" label="30025" default="https://torrentio.strem.fun/" visible="eq(-1,true)"/>
+        <setting id="torrentio_priority_lang" type="labelenum" label="Priority Language" values="GB|JP|RU|IT|PT|ES|MX|KR|CN|TW|FR|DE|NL|IN|PL|LT|CZ|SK|SI|HU|RO|HR|UA|GR|DK|FI|SE|NO|TR|None" default="None" visible="eq(-2,true)"/>
+        <setting type="text" label="Click below to select torrentio providers" enable="false" visible="eq(-3,true)"  /> 
+        <setting type="action" label="Torrentio Providers" action="RunPlugin(plugin://plugin.video.jacktook/?action=torrentio_selection)" visible="eq(-4,true)"/>
+        <setting label="Jackgram Configuration" type="lsep"/>
+        <setting id="jackgram_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="jackgram_host" type="text" label="Jackgram Host" default="" visible="eq(-1,true)"/>
+        <setting label="Elfhosted/KnightCrawler Configuration" type="lsep"/>
+        <setting id="elfhosted_enabled" type="bool" label="Enable" default="true"/>
+        <setting id="elfhosted_host" type="text" label="30025" default="https://torrentio.elfhosted.com/" visible="eq(-1,true)"/>
+        <setting label="Zilean Configuration" type="lsep"/>
+        <setting id="zilean_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="zilean_host" type="text" label="Zilean Host" default="https://zilean.elfhosted.com" visible="eq(-1,true)"/>
+        <setting id="zilean_timeout" type="number" label="Zilean Timeout" default="10"/>
+        <setting label="30022" type="lsep"/>
+        <setting id="jackett_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="jackett_host" type="text" label="30025" default="" visible="eq(-1,true)"/>
+        <setting id="jackett_apikey" type="text" label="30023" default="" visible="eq(-2,true)"/>
+        <setting id="jackett_timeout" type="slider" label="30030" option="int" range="1,1,30" default="25" visible="eq(-3,true)"/>
+        <setting label="30050" type="lsep"/>
+        <setting id="prowlarr_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="prowlarr_host" type="text" label="30052" default="" visible="eq(-1,true)"/>
+        <setting id="prowlarr_apikey" type="text" label="30051" default="" visible="eq(-2,true)"/>
+        <setting id="prowlarr_indexer_ids" type="text" label="30053" default="" visible="eq(-3,true)"/>
+        <setting id="prowlarr_timeout" type="slider" label="30031" option="int" range="1,1,30" default="25" visible="eq(-4,true)"/>
+        <setting label="MediaFusion configuration" type="lsep"/>
+        <setting id="mediafusion_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="mediafusion_host" type="text" label="30052" default="https://mediafusion.elfhosted.com" visible="eq(-1,true)"/>
+        <setting id="mediafusion_manifest_url" type="text" label="Manifest Url" default="" visible="eq(-2,true)"/>
+        <setting label="Jacktook Burst Configuration" type="lsep"/>
+        <setting id="jacktookburst_enabled" type="bool" label="Enable" default="false"/>
+        <setting type="action" label="Burst Configuration" action="RunPlugin(plugin://plugin.video.jacktook/?action=open_burst_config)" visible="eq(-1,true)"/>
+    </category>
+    <category label="30150">
+        <setting label="30152" type="lsep"/>
+        <setting id="real_debrid_enabled" type="bool" label="Enable" default="false"/>
+        <setting id="real_debid_authorized" type="bool" label="" default="false" visible="false"/>
+        <setting id="real_debrid_user" type="text" label="User" default="" visible="eq(-1,true)"/>
+        <setting id="real_debrid_token" type="text" label="30154" default="" visible="false"/>
+        <setting type="action" label="Authorize" action="RunPlugin(plugin://plugin.video.jacktook/?action=rd_auth)" />
+        <setting type="action" label="Remove Authorization" action="RunPlugin(plugin://plugin.video.jacktook/?action=rd_remove_auth)" />
+        <setting label="Premiumize Configuration" type="lsep"/>
+        <setting id="premiumize_enabled" type="bool" label="Enabled" default="false"/>
+        <setting id="premiumize_token" type="text" label="Token:" default="" visible="false"/>
+        <setting type="action" label="Authorize" action="RunPlugin(plugin://plugin.video.jacktook/?action=pm_auth)" />
+        <setting label="TorBox Configuration" type="lsep"/>
+        <setting id="torbox_enabled" type="bool" label="Enabled" default="false"/>
+        <setting id="torbox_token" type="text" label="Token:" default=""/>
+        <setting label="EasyDebrid Configuration" type="lsep"/>
+        <setting id="easydebrid_enabled" type="bool" label="Enabled" default="false"/>
+        <setting id="easydebrid_token" type="text" label="Token:" default=""/>
+        <setting label="" type="lsep"/>
+        <setting id="show_uncached" type="bool" label="Show uncached torrents" default="true"/>
+    </category>
+    <category label="30100">
+        <setting label="30102" type="lsep"/>
+        <setting id="tmdb_apikey" type="text" label="30103" default=""/>
+        <setting id="kodi_language" type="bool" label="Use Kodi Language" default="false"/>
+    </category>
+    <category label="Trakt">
+        <setting label="Trakt Configuration" type="lsep"/>
+        <setting type="action" label="Authorize" action="RunPlugin(plugin://plugin.video.jacktook/?action=trakt_auth)" />
+        <setting id="trakt.expires" type="text" default="0" visible="false"/>
+        <setting id="trakt.refresh" type="text" default="0" visible="false"/>
+        <setting id="trakt.token" type="text" default="0" visible="false"/>
+        <setting id="trakt.user" type="text" default="0" visible="false"/>
+        <setting id="jacktook.trakt.client" type="text" label="Trakt Client" default="1038ef327e86e7f6d39d80d2eb5479bff66dd8394e813c5e0e387af0f84d89fb"/>
+        <setting id="jacktook.trakt.secret" type="text" label="Trakt Secret" default="8d27a92e1d17334dae4a0590083a4f26401cb8f721f477a79fd3f218f8534fd1"/>
+        <setting type="action" label="Log out" action="RunPlugin(plugin://plugin.video.jacktook/?action=trakt_auth_revoke)" />
+    </category>
+    <category label="30200">
+        <setting label="30202" type="lsep"/>
+        <setting id="fanart_tv_client_id" type="text" label="30203" default="fa836e1c874ba95ab08a14ee88e05565"/>
+    </category>
+    <category label="Menus">
+        <setting label="" type="lsep"/>
+        <setting id="show_telegram_menu" type="bool" label="Show Telegram Menu" default="false"/>
+    </category>
+</settings>
