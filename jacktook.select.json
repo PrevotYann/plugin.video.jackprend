@@ -1,9 +1,8 @@
 {
-    "name": "[B][COLOR snow]Jacktook[/COLOR][/B]",
-    "plugin": "plugin.video.jacktook",
+    "name": "[B][COLOR snow]Jackprend[/COLOR][/B]",
+    "plugin": "plugin.video.jackprend",
     "priority": 200,
     "is_resolvable": "true",
-    "play_movie": "plugin://plugin.video.jacktook/?action=search&mode=movies&rescrape=True&query={title}&ids={tmdb}%2C%20{tvdb}%2C%20{imdb}",
-    "play_episode": "plugin://plugin.video.jacktook/?action=search&mode=tv&rescrape=True&query={showname}&ids={tmdb}%2C%20{tvdb}%2C%20{imdb}&tv_data={title}%28%5E%29{episode}%28%5E%29{season}"
+    "play_movie": "plugin://plugin.video.jackprend/?action=search&mode=movies&rescrape=True&query={title}&ids={tmdb}%2C%20{tvdb}%2C%20{imdb}",
+    "play_episode": "plugin://plugin.video.jackprend/?action=search&mode=tv&rescrape=True&query={showname}&ids={tmdb}%2C%20{tvdb}%2C%20{imdb}&tv_data={title}%28%5E%29{episode}%28%5E%29{season}"
 }
-

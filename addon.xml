@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<addon id="plugin.video.jackprend" name="Jackprend" version="0.4.4" provider-name="Sam-Max">
+<addon id="plugin.video.jackprend" name="Jackprend" version="0.0.3" provider-name="PrevotYann">
   <requires>
     <import addon="xbmc.python" version="3.00.0"/>
     <import addon="script.module.requests" version="2.25.1"/>
@@ -12,8 +12,8 @@
   <extension point="xbmc.python.module" library="lib/api"/>
   <extension point="xbmc.python.module" library="lib/bencodepy"/>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">jackprend</summary>
-    <description lang="en">Kodi addon for torrent streaming</description>
+    <summary lang="en">Jackprend</summary>
+    <description lang="en">Kodi addon for torrent streaming in french.</description>
     <license>GPL-2.0-only</license>
     <source>https://github.com/PrevotYann/plugin.video.jackprend</source>
     <assets>

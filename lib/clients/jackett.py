@@ -11,24 +11,41 @@ class Jackett(BaseClient):
         self.apikey = apikey
         self.base_url = f"{self.host}/api/v2.0/indexers/all/results/torznab/api?apikey={self.apikey}"
 
-    def search(self, query, mode, season, episode):
+    def search(self, query, mode, season=None, episode=None):
         try:
-            if mode == "tv":
-                url = f"{self.base_url}&t=tvsearch&q={query}"#&season={season}&ep={episode}"
-            elif mode == "movies":
-                url = f"{self.base_url}&q={query}"
-            else:
-                url = f"{self.base_url}&t=search&q={query}"
+            urls = []
 
-            response = self.session.get(
-                url,
-                timeout=get_jackett_timeout(),
-            )
-            
-            if response.status_code != 200:
-                self.notification(f"{translation(30229)} ({response.status_code})")
-                return
-            return self.parse_response(response)
+            if mode == "tv":
+                urls = [
+                    f"{self.base_url}&t=tvsearch&q={query}&season={season}&ep={episode}" if season and episode else None,
+                    f"{self.base_url}&t=tvsearch&q={query}&season={season}" if season else None,
+                    f"{self.base_url}&t=tvsearch&q={query}",
+                ]
+            elif mode == "movies":
+                urls = [f"{self.base_url}&q={query}"]
+            else:
+                urls = [f"{self.base_url}&t=search&q={query}"]
+
+            # Filter out None URLs
+            urls = [url for url in urls if url]
+
+            all_results = []
+            for url in urls:
+                response = self.session.get(url, timeout=get_jackett_timeout())
+                
+                if response.status_code != 200:
+                    self.notification(f"{translation(30229)} ({response.status_code})")
+                    continue
+                
+                results = self.parse_response(response)
+                if results:
+                    all_results.extend(results)
+                    break  # Stop processing once results are found
+
+            # Remove duplicates by 'guid'
+            unique_results = self.deduplicate_results(all_results)
+
+            return unique_results
         except Exception as e:
             self.notification(f"{translation(30229)}: {str(e)}")
 
@@ -43,6 +60,16 @@ class Jackett(BaseClient):
                 extract_result(results, i)
             kodilog(results)
             return results
+
+    def deduplicate_results(self, results):
+        seen = set()
+        unique_results = []
+        for result in results:
+            guid = result.get("guid", "")
+            if guid not in seen:
+                seen.add(guid)
+                unique_results.append(result)
+        return unique_results
 
 
 def extract_result(results, item):
