@@ -751,17 +751,32 @@ def filter_by_episode(results, episode_name, episode_num, season_num):
     pattern5 = r"\.S%sE%s" % (season_fill, episode_fill)
     pattern6 = r"\sS%sE%s\s" % (season_fill, episode_fill)
     pattern7 = "integral"
-    pattern9 = "intégral"
-    pattern8 = "complet"
-    pattern8 = r"season %s" % (season_num)
-    pattern8 = r"season %s" % (season_fill)
-    pattern8 = r"saison %s" % (season_num)
-    pattern8 = r"saison %s" % (season_fill)
-    kodilog("PREY3")
-    kodilog([r["title"] for r in results])
+    pattern8 = "intégral"
+    pattern9 = "complet"
+    pattern10 = r"season %s" % (season_num)
+    pattern11 = r"season %s" % (season_fill)
+    pattern12 = r"saison %s" % (season_num)
+    pattern13 = r"saison %s" % (season_fill)
+    pattern14 = r"- %s" % (episode_fill)
 
     patterns = "|".join(
-        [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, pattern7, pattern8, pattern9, episode_name]
+        [
+            pattern1,
+            pattern2,
+            pattern3,
+            pattern4,
+            pattern5,
+            pattern6,
+            pattern7,
+            pattern8,
+            pattern9,
+            pattern10,
+            pattern11,
+            pattern12,
+            pattern13,
+            pattern14,
+            episode_name
+        ]
     )
 
     filtered_episodes = []

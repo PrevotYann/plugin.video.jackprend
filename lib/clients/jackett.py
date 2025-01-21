@@ -2,7 +2,6 @@ from lib.clients.base import BaseClient
 from lib.utils.kodi_utils import translation
 from lib import xmltodict
 from lib.utils.settings import get_jackett_timeout
-from lib.api.jacktook.kodi import kodilog
 
 
 class Jackett(BaseClient):
@@ -18,7 +17,6 @@ class Jackett(BaseClient):
             if mode == "tv":
                 urls = [
                     f"{self.base_url}&t=tvsearch&q={query}&season={season}&ep={episode}" if season and episode else None,
-                    f"{self.base_url}&t=tvsearch&q={query}&season={season}" if season else None,
                     f"{self.base_url}&t=tvsearch&q={query}",
                 ]
             elif mode == "movies":
@@ -51,14 +49,11 @@ class Jackett(BaseClient):
 
     def parse_response(self, res):
         res = xmltodict.parse(res.content)
-        kodilog("Response JACKETT PREY v3")
-        kodilog(res)
         if "item" in res["rss"]["channel"]:
             item = res["rss"]["channel"]["item"]
             results = []
             for i in item if isinstance(item, list) else [item]:
                 extract_result(results, i)
-            kodilog(results)
             return results
 
     def deduplicate_results(self, results):
