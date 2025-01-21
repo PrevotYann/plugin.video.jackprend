@@ -1,6 +1,6 @@
 # Kodi Media Center language file
 # Addon Name: Jacktook
-# Addon id: plugin.video.jacktook
+# Addon id: plugin.video.jackprend
 # Addon Provider: Sam-Max
 #
 msgid ""

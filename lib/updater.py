@@ -22,12 +22,12 @@ from xbmcvfs import translatePath as translate_path
 
 packages_dir = translate_path("special://home/addons/packages/")
 home_addons_dir = translate_path("special://home/addons/")
-destination_check = translate_path("special://home/addons/plugin.video.jacktook/")
+destination_check = translate_path("special://home/addons/plugin.video.jackprend/")
 changelog_location = translate_path(
-    "special://home/addons/plugin.video.jacktook/CHANGELOG.md"
+    "special://home/addons/plugin.video.jackprend/CHANGELOG.md"
 )
 repo_url = "https://github.com/Sam-Max/repository.jacktook/raw/main/packages"
-jacktook_url = "https://raw.githubusercontent.com/Sam-Max/repository.jacktook/main/repo/zips/plugin.video.jacktook"
+jacktook_url = "https://raw.githubusercontent.com/Sam-Max/repository.jacktook/main/repo/zips/plugin.video.jackprend"
 heading = "Jacktook Updater"
 
 
@@ -92,7 +92,7 @@ def update_addon(new_version, action):
         clear_cache_on_update()
     close_all_dialog()
     execute_builtin("ActivateWindow(Home)", True)
-    zip_name = f"plugin.video.jacktook-{new_version}.zip"
+    zip_name = f"plugin.video.jackprend-{new_version}.zip"
     url = f"{jacktook_url}/{zip_name}"
     result = requests.get(url, stream=True)
     if result.status_code != 200:
@@ -103,7 +103,7 @@ def update_addon(new_version, action):
     zip_location = ospath.join(packages_dir, zip_name)
     with open(zip_location, "wb") as f:
         shutil.copyfileobj(result.raw, f)
-    local_repo_path = ospath.join(home_addons_dir, "plugin.video.jacktook")
+    local_repo_path = ospath.join(home_addons_dir, "plugin.video.jackprend")
     if ospath.exists(local_repo_path):
         shutil.rmtree(local_repo_path)
     success = unzip(zip_location, home_addons_dir, destination_check)

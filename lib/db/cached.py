@@ -18,7 +18,7 @@ else:
     from xbmc import translatePath
 
 ADDON_DATA = translatePath(
-    xbmcaddon.Addon("plugin.video.jacktook").getAddonInfo("profile")
+    xbmcaddon.Addon("plugin.video.jackprend").getAddonInfo("profile")
 )
 ADDON_ID = xbmcaddon.Addon().getAddonInfo("id")
 

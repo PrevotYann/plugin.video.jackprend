@@ -35,7 +35,7 @@ The recommended way of installing the addon is through its [repository](https://
 3. Prowlarr Indexers-Ids field is space separated ids of the indexers you have on your Prowlarr instance configured. Ex. 25 27 14. By default this field is empty, which means it will search on all your indexers.
 4. You can deploy/install on a remote server (instructions more below) the TorrServer Engine (torrent client that uses Jacktorr Addon). After that, you need to configure Jacktorr Addon with the TorrServer Engine IP/Domain and Port.
 5. You can deploy/install on a remote server (instructions more below) the Torrest Engine (torrent client that uses Torrest Addon). After that, you need to configure Torrest Addon with the Torrest Engine IP/Domain and Port.
-6. To use TMDB Helper Addon use: [jacktook.select.json](https://raw.githubusercontent.com/Sam-Max/plugin.video.jacktook/master/jacktook.select.json)
+6. To use TMDB Helper Addon use: [jacktook.select.json](https://raw.githubusercontent.com/Sam-Max/plugin.video.jackprend/master/jacktook.select.json)
 
 ## How to use Jacktook Burst:
 
@@ -109,7 +109,7 @@ CMD ["/usr/local/lib/torrest", "--log-level", "INFO"]
 
 ## Screenshots:
 
-![](https://raw.githubusercontent.com/Sam-Max/plugin.video.jacktook/master/resources/screenshots/settings.png)
+![](https://raw.githubusercontent.com/Sam-Max/plugin.video.jackprend/master/resources/screenshots/settings.png)
 
 ## Disclaimer:
 
