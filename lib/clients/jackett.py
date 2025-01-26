@@ -5,6 +5,8 @@ from lib.utils.settings import get_jackett_timeout
 
 from lib.api.jacktook.kodi import kodilog
 
+import unicodedata
+
 
 class Jackett(BaseClient):
     def __init__(self, host, apikey, notification):
@@ -14,6 +16,9 @@ class Jackett(BaseClient):
 
     def search(self, query, mode, season=None, episode=None):
         try:
+            normalized = unicodedata.normalize("NFKD", query)
+            # Filter out the diacritical marks (non-ASCII characters)
+            query = "".join(c for c in normalized if not unicodedata.combining(c))
             urls = []
 
             if mode == "tv":
