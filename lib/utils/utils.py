@@ -636,8 +636,8 @@ def unzip(zip_location, destination_location, destination_check):
 
 def check_pack(results, season_num):
     season_fill = f"{int(season_num):02}"
-    pattern1 = r"\.S%s\." % (season_num)
-    pattern2 = r"\.S%s\." % (season_fill)
+    pattern1 = r"S%s" % (season_num)
+    pattern2 = r"S%s" % (season_fill)
     pattern3 = r"\sS%s\s" % (season_num)
     pattern4 = r"\.%s\.season" % (season_num)
     pattern5 = r"total\.season"
@@ -670,7 +670,7 @@ def check_pack(results, season_num):
             pattern13,
             pattern14,
             pattern15,
-            pattern16
+            pattern16,
         ]
     )
 
@@ -747,8 +747,8 @@ def filter_by_episode(results, episode_name, episode_num, season_num):
     pattern1 = r"S%sE%s" % (season_fill, episode_fill)
     pattern2 = r"%sx%s" % (season_fill, episode_fill)
     pattern3 = r"\s%s\s" % (season_fill)
-    pattern4 = r"\.S%s" % (season_fill)
-    pattern5 = r"\.S%sE%s" % (season_fill, episode_fill)
+    pattern4 = r"S%s" % (season_fill)
+    pattern5 = r"S%sE%s" % (season_fill, episode_fill)
     pattern6 = r"\sS%sE%s\s" % (season_fill, episode_fill)
     pattern7 = "integral"
     pattern8 = "intégral"
@@ -775,7 +775,7 @@ def filter_by_episode(results, episode_name, episode_num, season_num):
             pattern12,
             pattern13,
             pattern14,
-            episode_name
+            episode_name,
         ]
     )
 
@@ -927,7 +927,7 @@ def debrid_dialog_update(type, total, dialog, lock):
 
         dialog.update(
             dialog_update.get("percent"),
-            f"Jacktook [COLOR FFFF6B00]Debrid-{type}[/COLOR]",
+            f"Jackprend [COLOR FFFF6B00]Debrid-{type}[/COLOR]",
             f"Checking: {dialog_update.get('count')}/{total}",
         )
 

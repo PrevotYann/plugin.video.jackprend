@@ -3,6 +3,8 @@ from lib.utils.kodi_utils import translation
 from lib import xmltodict
 from lib.utils.settings import get_jackett_timeout
 
+from lib.api.jacktook.kodi import kodilog
+
 
 class Jackett(BaseClient):
     def __init__(self, host, apikey, notification):
@@ -16,7 +18,11 @@ class Jackett(BaseClient):
 
             if mode == "tv":
                 urls = [
-                    f"{self.base_url}&t=tvsearch&q={query}&season={season}&ep={episode}" if season and episode else None,
+                    (
+                        f"{self.base_url}&t=tvsearch&q={query}&season={season}&ep={episode}"
+                        if season and episode
+                        else None
+                    ),
                     f"{self.base_url}&t=tvsearch&q={query}",
                 ]
             elif mode == "movies":
@@ -30,12 +36,14 @@ class Jackett(BaseClient):
             all_results = []
             for url in urls:
                 response = self.session.get(url, timeout=get_jackett_timeout())
-                
+
                 if response.status_code != 200:
                     self.notification(f"{translation(30229)} ({response.status_code})")
                     continue
-                
+
                 results = self.parse_response(response)
+                kodilog("PREY1")
+                kodilog(results)
                 if results:
                     all_results.extend(results)
                     break  # Stop processing once results are found

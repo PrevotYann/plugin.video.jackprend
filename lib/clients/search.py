@@ -5,7 +5,7 @@ from lib.utils.utils import Indexer, get_cached, set_cached
 
 
 def show_dialog(title, message, dialog):
-    dialog.update(0, f"Jacktook [COLOR FFFF6B00]{title}[/COLOR]", message)
+    dialog.update(0, f"Jackprend [COLOR FFFF6B00]{title}[/COLOR]", message)
 
 
 def search_client(
